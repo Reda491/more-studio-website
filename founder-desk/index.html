@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f6f5">
+<title>MORE STUDIO OS — Founder Desk</title>
+<style>
+:root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#26333d;background:#f5f7f6}
+*{box-sizing:border-box}body{margin:0;font-size:14px}button,input{font:inherit}button{cursor:pointer}a{color:#376392;text-decoration:none}a:hover{text-decoration:underline}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #82a6c6;outline-offset:3px}
+.shell{display:grid;grid-template-columns:234px minmax(0,1fr);min-height:100vh}
+aside{background:#202a34;color:#fff;padding:24px 14px;display:flex;flex-direction:column;gap:20px}
+.brand{padding:12px;font-size:18px;font-weight:750;letter-spacing:.035em}.brand small{display:block;color:#a8b9c4;font-size:9px;letter-spacing:.22em;margin-top:7px}
+nav{display:grid;gap:6px;margin-top:26px}nav button{border:0;border-radius:9px;padding:13px 12px;text-align:left;color:#b4c0c9;background:transparent;font-size:13px}
+nav button:hover,nav button.active{background:#3a4653;color:#fff}.glyph{display:inline-block;width:28px;font-size:15px}
+.foot{margin-top:auto;padding:15px 10px;border-top:1px solid #455260;color:#a6b5bf;font-size:11px;line-height:1.7}
+main{padding:34px clamp(20px,4vw,64px) 80px;min-width:0;max-width:1580px;width:100%}
+header{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:38px}
+.kicker{font-size:10px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;color:#6484a1}
+h1{font-size:clamp(28px,3vw,41px);font-weight:600;letter-spacing:-.043em;line-height:1.14;margin:10px 0 11px}
+h2{font-size:17px;letter-spacing:-.015em;margin:0 0 14px;font-weight:650}
+h3{font-size:14px;margin:0;font-weight:650}.subtitle{color:#788792;font-size:13px;line-height:1.6;margin:0}
+.btn{padding:10px 14px;border:1px solid #d6dfe2;background:#fff;color:#334b60;border-radius:9px;font-size:12px;font-weight:650;white-space:nowrap}
+.btn.dark{background:#243440;border-color:#243440;color:#fff}.btn:hover{filter:brightness(.96)}.buttons{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.pill{font-size:10px;font-weight:750;background:#e6eef4;color:#4c6e89;border-radius:7px;padding:7px 9px;white-space:nowrap}
+.hero{background:#e9eff3;border:1px solid #dae5ee;border-radius:13px;padding:24px;display:flex;align-items:center;justify-content:space-between;gap:15px;margin:28px 0}
+.hero h2{margin:8px 0 10px}.hero p{max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:27px 0}
+.stat,.panel,.project{background:#fff;border:1px solid #e0e6e7;border-radius:13px}
+.stat{padding:20px}.stat .number{font-size:31px;letter-spacing:-.045em;font-weight:650;margin:12px 0 5px}.stat .tiny{color:#7b8992;font-size:12px}
+.layout{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}.panel{padding:22px;min-width:0}
+.entry{display:flex;gap:14px;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #e9eeef;padding:15px 0}
+.entry:last-child{border-bottom:0;padding-bottom:0}.entry .name{font-size:13px;font-weight:650;line-height:1.5}
+.entry .meta{color:#7b8a94;font-size:11px;margin-top:5px;line-height:1.5}
+.tag{font-size:10px;font-weight:750;padding:6px 8px;border-radius:6px;white-space:nowrap;background:#eff2f3;color:#65747e}
+.tag.orange{background:#fdf1df;color:#96642c}.tag.blue{background:#e8effa;color:#3d639b}.tag.green{background:#e6f3e9;color:#39804d}.tag.red{background:#fae8e5;color:#a34d43}
+.notice{background:#fff8e8;color:#8b6133;border:1px solid #eadbbb;border-radius:10px;padding:14px 16px;font-size:12px;line-height:1.6;margin-top:20px}
+.projectGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:24px}
+.project{padding:23px;text-align:left;min-height:170px;display:flex;flex-direction:column;gap:13px;color:inherit;cursor:pointer}
+.project:hover{border-color:#82a5c3}.project .pname{font-size:19px;letter-spacing:-.03em;font-weight:650}
+.project .small{color:#74818b;font-size:12px}.project .statsline{margin-top:auto;display:flex;gap:14px;flex-wrap:wrap;color:#73838e;font-size:11px}
+.detailGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.wide{grid-column:1/-1}
+.phase{border-left:3px solid #9db6cf;background:#f7f9fa;padding:11px 13px;margin:10px 0}.phase.offer{border-color:#d9bd8c}
+.back{border:0;background:none;color:#39709e;font-weight:650;font-size:12px;margin-bottom:19px;padding:0}
+.source{display:inline-block;font-size:12px;font-weight:650;margin-top:8px}
+.empty{padding:32px;color:#7e8e99;font-size:12px;text-align:center}
+.hidden{display:none!important}
+#gate{position:fixed;inset:0;background:#e9eded;display:grid;place-items:center;padding:20px;z-index:20}
+.login{width:min(420px,100%);padding:32px;background:white;border:1px solid #dce3e5;border-radius:15px;box-shadow:0 18px 42px #21324119}
+.login h1{font-size:29px}.login label{display:block;color:#607487;font-size:11px;font-weight:750;margin:19px 0 7px}
+.login input{width:100%;border:1px solid #d8e0e4;border-radius:8px;padding:12px;font-size:13px}
+.login .btn{width:100%;margin-top:11px}.login .statusText{margin-top:17px;font-size:12px;line-height:1.6;color:#6f808b}.login .statusText.error{color:#a8483f}
+@media(max-width:940px){.shell{grid-template-columns:75px minmax(0,1fr)}aside{padding:15px 8px}.brand{font-size:11px}.brand small,.label,.foot{display:none}nav button{text-align:center}.glyph{width:auto;font-size:19px}.layout{grid-template-columns:1fr}}
+@media(max-width:640px){.shell{display:block}aside{display:flex;flex-direction:row;position:static;align-items:center;padding:8px 12px}.brand{flex-shrink:0;font-size:12px;padding:7px}.brand small{display:none}nav{margin:0 0 0 auto;display:flex;gap:2px}nav button{padding:10px}main{padding:23px 16px 50px}header{align-items:flex-start;margin-bottom:25px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:15px}.projectGrid,.detailGrid{grid-template-columns:1fr}.wide{grid-column:auto}.hero{display:block}.hero .btn{margin-top:17px}.panel{padding:17px}}
+</style></head><body>
+<section id="gate"><div class="login">
+<div class="kicker">MORE STUDIO / ESPACE PRIVÉ</div><h1>Founder Desk</h1>
+<p class="subtitle">Ton cabinet, tes projets et tes priorités. Accès sécurisé réservé au compte professionnel.</p>
+<form id="signIn"><label for="email">EMAIL PROFESSIONNEL</label><input id="email" type="email" autocomplete="username" placeholder="hello@morestudio.ma" required>
+<label for="password">MOT DE PASSE</label><input id="password" type="password" autocomplete="current-password" placeholder="Au moins 8 caractères">
+<button class="btn dark" type="submit">Se connecter</button></form>
+<button class="btn" id="signup" type="button">Première connexion · Créer mon accès</button>
+<button class="btn" id="otp" type="button">Recevoir un lien de connexion</button>
+<div id="otpForm" class="hidden"><label for="otpCode">CODE REÇU PAR EMAIL</label><input id="otpCode" placeholder="Code de confirmation"><button id="verifyOtp" class="btn" type="button">Valider le code</button></div>
+<p class="statusText" id="authStatus">Pour le pilote, utilise hello@morestudio.ma. Les données ne sont accessibles qu’après authentification.</p>
+</div></section>
+<div id="app" class="shell hidden">
+<aside><div class="brand">MORE STUDIO<small>OPERATING SYSTEM</small></div><nav aria-label="Navigation">
+<button data-route="today" class="active"><span class="glyph">◫</span><span class="label">Aujourd'hui</span></button>
+<button data-route="projects"><span class="glyph">▦</span><span class="label">Projets</span></button>
+<button data-route="inbox"><span class="glyph">◈</span><span class="label">Inbox</span></button>
+<button data-route="finance"><span class="glyph">◉</span><span class="label">Finance</span></button>
+</nav><div class="foot">MORE STUDIO OS<br>Version pilote · Lecture seule</div></aside>
+<main><header><div class="kicker">MORE STUDIO / FOUNDER DESK</div><div class="buttons">
+<span class="pill">PILOTE · LECTURE SEULE</span><button class="btn" id="refresh">↻ Actualiser</button><button class="btn" id="logout">Déconnexion</button></div>
+</header><div id="view" aria-live="polite"></div></main>
+</div>
+<script type="module">
+import {createClient} from "https://esm.sh/@supabase/supabase-js@2";
+const s=createClient("https://ihtwoncfcghrkecjyxzi.supabase.co","sb_publishable_qYKAZnbSctfaWFxF1ONFTg_IRRk7qdY",{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const API="https://ihtwoncfcghrkecjyxzi.supabase.co/functions/v1/more-os-founder-desk";
+const el=id=>document.getElementById(id);
+let data=null,page="today",focusId=null;
+const list=key=>Array.isArray(data?.[key])?data[key]:[];
+const h=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeLink=(url,title)=>/^https:\/\/(drive\.google\.com|docs\.google\.com|mail\.google\.com)\//i.test(String(url||""))?'<a class="source" href="'+h(url)+'" target="_blank" rel="noopener noreferrer">'+h(title||"Ouvrir ↗")+'</a>':"";
+const op=id=>list("operations").find(x=>x.id===id);
+const opName=id=>op(id)?.name||"Dossier à qualifier";
+const related=(o,key)=>{const mids=new Set(list("missions").filter(x=>x.operation_id===o.id).map(x=>x.id));return list(key).filter(x=>x.operation_id===o.id||(x.mission_id&&mids.has(x.mission_id)))};
+function documents(o){const mids=new Set(related(o,"missions").map(m=>m.id)),ids=new Set(list("document_links").filter(l=>mids.has(l.mission_id)).map(l=>l.document_id));return list("documents").filter(d=>d.operation_id===o.id||ids.has(d.id))}
+function badge(x){const v=String(x||"À qualifier"),t=v.toLowerCase(),color=/(validé|terminé|documenté)/.test(t)?"green":/(attente|vérifier|valider|qualifier|propos|envoyé|confirmer)/.test(t)?"orange":/(refus|annulé|bloqué)/.test(t)?"red":/(cours|négociation)/.test(t)?"blue":"";return '<span class="tag '+color+'">'+h(v)+'</span>'}
+function date(v){if(!v)return "";let x=new Date(String(v).length===10?v+"T12:00:00":v);return Number.isFinite(x.getTime())?new Intl.DateTimeFormat("fr-MA",{day:"2-digit",month:"short",year:"numeric"}).format(x):""}
+function cash(v){return new Intl.NumberFormat("fr-MA",{maximumFractionDigits:0}).format(Number(v||0))+" MAD"}
+function rows(arr,fn,label){return arr.length?arr.map(fn).join(""):'<div class="empty">'+h(label||"Aucune donnée actuellement")+'</div>'}
+function entry(title,description,status,url){return '<div class="entry"><div><div class="name">'+h(title)+'</div><div class="meta">'+h(description||"")+'</div>'+safeLink(url,"Voir la source ↗")+'</div>'+(status?badge(status):"")+'</div>'}
+function panel(title,inside){return '<section class="panel"><h2>'+h(title)+'</h2>'+inside+'</section>'}
+function today(){const tasks=list("tasks").filter(x=>!/(terminée|annulée)/i.test(x.status)),cases=list("procedures").filter(x=>/à vérifier/i.test(x.evidenced_status)),inbox=list("inbox");
+return '<div class="kicker">VUE FONDATEUR</div><h1>Ton cabinet, en un regard.</h1><p class="subtitle">Ce qui demande ton attention, avec une distinction claire entre faits vérifiés et informations à qualifier.</p>'+
+'<div class="stats">'+[['Opérations',list("operations").length,'3 projets pilotes'],['Actions à suivre',tasks.length,'Priorités'],['Démarches',cases.length,'À vérifier'],['Inbox',inbox.length,'Événements indexés']].map(x=>'<div class="stat"><div class="kicker">'+x[0]+'</div><div class="number">'+x[1]+'</div><div class="tiny">'+x[2]+'</div></div>').join("")+'</div>'+
+'<div class="hero"><div><div class="kicker">MORE STUDIO OS</div><h2>Moins de tableaux. Plus de décisions.</h2><p class="subtitle">Ouvre un projet pour retrouver ses missions, phases, documents, tâches et pièces originales. Les automatisations Gmail/Drive suivront.</p></div><button class="btn dark" data-route="projects">Voir mes projets →</button></div>'+
+'<div class="layout">'+panel("Actions du cabinet",rows(tasks,t=>entry(t.title,opName(t.operation_id)+" · "+(t.priority||"Normal")+(t.due_date?" · "+date(t.due_date):""),t.status),"Aucune action"))+
+panel("Démarches à vérifier",rows(cases,t=>entry(t.title,opName(t.operation_id),t.evidenced_status,t.evidence_url),"Aucune démarche à vérifier"))+'</div>'+
+'<div class="notice">Cette version est en lecture seule. Les données sont issues de l’import pilote, sans synchronisation quotidienne active ni rapprochement bancaire.</div>'}
+function projects(){return '<div class="kicker">PROJETS</div><h1>Opérations du cabinet</h1><p class="subtitle">Une opération peut avoir plusieurs missions, avec ses propres documents et suivis.</p><div class="projectGrid">'+
+rows(list("operations"),o=>'<button class="project" data-open="'+h(o.id)+'"><div class="small">'+h(o.family||"Architecture")+' · '+h(o.city||"Maroc")+'</div><div class="pname">'+h(o.name)+'</div>'+badge(o.status==="to_qualify"?"Rattachement provisoire":"Dossier importé")+'<div class="statsline"><span>'+related(o,"missions").length+' mission(s)</span><span>'+related(o,"tasks").length+' action(s)</span><span>'+documents(o).length+' source(s)</span></div></button>',"Aucun projet importé")+'</div>'}
+function projectDetail(){const o=op(focusId);if(!o){focusId=null;return projects()}
+const ms=related(o,"missions"),acts=related(o,"tasks"),ph=related(o,"phases"),prop=related(o,"proposed_phases"),docs=documents(o),proc=related(o,"procedures"),offers=related(o,"offers");
+const contacts=list("operation_contacts").filter(x=>x.operation_id===o.id).map(x=>list("contacts").find(c=>c.id===x.contact_id)).filter(Boolean);
+return '<button class="back" id="back">← Tous les projets</button><div class="kicker">'+h(o.family||"Architecture")+' / '+h(o.city||"Maroc")+'</div><h1>'+h(o.name)+'</h1><p class="subtitle" style="margin-bottom:24px">'+ms.length+' missions · '+docs.length+' documents · '+acts.length+' actions</p><div class="detailGrid">'+
+panel("Missions",rows(ms,x=>entry(x.title,x.scope||x.service_family,x.status),"Aucune mission"))+
+panel("Contacts",rows(contacts,x=>entry(x.display_name,x.email||"Coordonnées à compléter"),"Aucun contact"))+
+'<div class="wide">'+panel("Actions à suivre",rows(acts,x=>entry(x.title,(x.priority||"Normal")+(x.due_date?" · "+date(x.due_date):""),x.status),"Aucune action"))+'</div>'+
+(ph.length?panel("Phases réelles",ph.map(x=>'<div class="phase"><div class="entry" style="padding:0;border:0"><div class="name">'+h(x.title)+'</div>'+badge(x.current_status)+'</div><p class="subtitle">'+h(x.deliverable||"")+'</p>'+safeLink(x.evidence_url,"Justificatif ↗")+'</div>').join("")):"")+
+(prop.length?panel("Phases proposées — non commandées",prop.map(x=>'<div class="phase offer"><div class="entry" style="padding:0;border:0"><div class="name">'+h(x.title)+'</div>'+badge(x.status)+'</div><p class="subtitle">'+h(x.deliverable||"")+'</p></div>').join("")):"")+
+(proc.length?panel("Démarches administratives",rows(proc,x=>entry(x.title,x.official_reference,x.evidenced_status,x.evidence_url))):"")+
+(offers.length?panel("Offres commerciales",offers.map(x=>entry(x.reference,cash(x.honoraires_base_ht)+" HT · Option "+cash(x.option_ht)+" HT distincte",x.status,x.pdf_url)).join("")):"")+
+'<div class="wide">'+panel("Documents et pièces originales",rows(docs,x=>entry(x.title,x.document_type+" · "+x.verification,null,x.source_url),"Aucun document indexé"))+'</div></div>'+
+'<div class="notice">Les étapes proposées ne sont pas des missions commandées. Les documents liés ne prouvent pas à eux seuls un accord client, une autorisation ou un paiement.</div>'}
+function inbox(){return '<div class="kicker">ÉVÉNEMENTS</div><h1>Inbox</h1><p class="subtitle" style="margin-bottom:25px">Faits déjà importés et leurs sources.</p>'+panel("Journal indexé",rows(list("inbox"),x=>entry(x.factual_summary||x.kind,opName(x.operation_id)+" · "+date(x.effective_on||x.received_at),x.status,x.source_payload?.evidence_url),"Aucun événement"))+'<div class="notice">Le suivi automatique Gmail/Drive n’est pas encore connecté.</div>'}
+function finance(){return '<div class="kicker">COMMERCIAL / FINANCE</div><h1>Finance</h1><p class="subtitle" style="margin-bottom:25px">Propositions commerciales sans confondre devis, facture et encaissement.</p>'+
+'<div class="stats">'+[['Devis indexés',list("offers").length,'Pilote'],['Factures vérifiées','—','Non réconciliées'],['Paiements reçus','—','Non réconciliés'],['Trésorerie','—','Non calculée']].map(x=>'<div class="stat"><div class="kicker">'+x[0]+'</div><div class="number">'+x[1]+'</div><div class="tiny">'+x[2]+'</div></div>').join("")+'</div>'+
+panel("Devis",rows(list("offers"),x=>entry(x.reference,cash(x.honoraires_base_ht)+" HT · option "+cash(x.option_ht)+" HT distincte",x.status,x.pdf_url),"Aucun devis"))+'<div class="notice">La finance exhaustive attend la réconciliation documentaire et bancaire. Aucun statut de règlement n’est présumé.</div>'}
+function draw(){el("view").innerHTML=focusId?projectDetail():page==="today"?today():page==="projects"?projects():page==="inbox"?inbox():finance();document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x.dataset.route===page))}
+function authMessage(text,error){el("authStatus").textContent=text;el("authStatus").className="statusText"+(error?" error":"")}
+function gate(reason){el("gate").classList.remove("hidden");el("app").classList.add("hidden");if(reason)authMessage(reason,true)}
+function show(){el("gate").classList.add("hidden");el("app").classList.remove("hidden")}
+async function load(){const {data:{session}}=await s.auth.getSession();if(!session){gate();return}show();el("view").innerHTML='<div class="empty">Lecture sécurisée des projets…</div>';
+try{const res=await fetch(API+"/api/snapshot",{method:"POST",headers:{"Authorization":"Bearer "+session.access_token,"Content-Type":"application/json"},body:"{}",cache:"no-store"});
+if(res.status===401||res.status===403){gate("Accès refusé : vérifier la confirmation de hello@morestudio.ma.");return}
+if(!res.ok)throw Error("API temporairement indisponible ("+res.status+")");const out=await res.json();if(!out.ok)throw Error("Lecture impossible");data=out.data;draw();}
+catch(e){el("view").innerHTML='<div class="notice">'+h(e.message)+'. Réessayer avec Actualiser.</div>'}}
+el("signIn").addEventListener("submit",async e=>{e.preventDefault();let email=el("email").value.trim(),password=el("password").value;authMessage("Connexion…");const {error}=await s.auth.signInWithPassword({email,password});if(error)return authMessage(error.message,true);load()});
+el("signup").addEventListener("click",async()=>{const email=el("email").value.trim().toLowerCase(),password=el("password").value;if(email!=="hello@morestudio.ma")return authMessage("Utilise hello@morestudio.ma.",true);if(password.length<8)return authMessage("Mot de passe : au moins 8 caractères.",true);
+const {data:user,error}=await s.auth.signUp({email,password,options:{emailRedirectTo:location.origin}});if(error)return authMessage(error.message,true);
+authMessage(user.session?"Compte prêt. Ouverture…":"Vérifie ton email pour confirmer le compte. L’adresse de redirection doit être autorisée dans Supabase.");if(user.session)load()});
+el("otp").addEventListener("click",async()=>{const email=el("email").value.trim().toLowerCase();if(email!=="hello@morestudio.ma")return authMessage("Utilise hello@morestudio.ma.",true);const {error}=await s.auth.signInWithOtp({email,options:{shouldCreateUser:true,emailRedirectTo:location.origin}});if(error)return authMessage(error.message,true);el("otpForm").classList.remove("hidden");authMessage("Consulte la boîte email professionnelle. Ouvre le lien ou entre le code reçu.")});
+el("verifyOtp").addEventListener("click",async()=>{const {error}=await s.auth.verifyOtp({email:el("email").value.trim(),token:el("otpCode").value.trim(),type:"email"});if(error)return authMessage(error.message,true);load()});
+el("refresh").addEventListener("click",load);
+el("logout").addEventListener("click",async()=>{await s.auth.signOut();data=null;gate("Session fermée.")});
+document.addEventListener("click",e=>{const r=e.target.closest("[data-route]");if(r){page=r.dataset.route;focusId=null;draw();return}const n=e.target.closest("[data-open]");if(n){focusId=n.dataset.open;page="projects";draw();window.scrollTo(0,0);return}if(e.target.closest("#back")){focusId=null;page="projects";draw()}});
+s.auth.onAuthStateChange((event)=>{if(event==="SIGNED_OUT"){data=null;gate()}});
+load();
+</script></body></html>
